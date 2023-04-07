@@ -6,9 +6,21 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 public class Main {
+
+    public static String leerArchivos(String archivo){//metodo estatico leer archivos
+        String arc = archivo;
+        return arc;
+    }
+    public static int obtenerPuntos(Pronostico[] pronosticoRonda, int indicePronostico){//metodo estatico obtener puntos
+        int totalPuntos=0;
+        for(int i=0; i<indicePronostico;i++){
+            totalPuntos+=pronosticoRonda[i].puntos();
+        }
+        return totalPuntos;
+    }
     public static void main(String[] args) {
-        String resultado ="C:\\Users\\mathy\\IdeaProjects\\Proyecto Integrador\\src\\modelo\\resultados.csv";//archivo resultados
-        String archivo2 = "C:\\Users\\mathy\\IdeaProjects\\Proyecto Integrador\\src\\modelo\\pronostico.csv";//archivo pronosticos persona
+        String resultado = leerArchivos("C:\\Users\\mathy\\IdeaProjects\\Proyecto-Integrador\\src\\modelo\\resultados.csv");//archivo resultados
+        String archivo2 = leerArchivos("C:\\Users\\mathy\\IdeaProjects\\Proyecto-Integrador\\src\\modelo\\pronostico.csv");//archivo pronosticos persona
         List<String> partidos = new ArrayList<>();
         List<String> pronosticos = new ArrayList<>();
         Partido partidosRonda[] = new  Partido[3];
@@ -36,32 +48,29 @@ public class Main {
                 partidosRonda[i] = partido1;
                 i++;
             }
-            for ( i =0; i < pronosticos.size() ; i++){//recorre partidos
+            int x = 0;
+            for (x =0; x < pronosticos.size() ; x++){//recorre partidos
                 Pronostico pronostico = new Pronostico();
                 ResultadoEnum resultadoPronostico;
-                if ( pronosticos.get(i).split(";")[1].isEmpty()) {
-                    if (pronosticos.get(i).split(";")[3].isEmpty()) {
+                if ( pronosticos.get(x).split(";")[1].isEmpty()) {
+                    if (pronosticos.get(x).split(";")[3].isEmpty()) {
                         resultadoPronostico = ResultadoEnum.EMPATE;
                     } else {
-                        resultadoPronostico = ResultadoEnum.GANADOR;
+                        resultadoPronostico = ResultadoEnum.PERDEDOR;
                     }
                 } else {
-                    resultadoPronostico = ResultadoEnum.PERDEDOR;
+                    resultadoPronostico = ResultadoEnum.GANADOR;
                     }
-                pronostico.setPartido(partidosRonda[i]);
-                pronostico.setEquipo(partidosRonda[i].getEquipo1());
+                pronostico.setPartido(partidosRonda[x]);
+                pronostico.setEquipo(partidosRonda[x].getEquipo1());
                 pronostico.setResultado(resultadoPronostico);
-                pronosticosRonda[i] = pronostico;
+                pronosticosRonda[x] = pronostico;
            }
-            int totalPuntos=0;
-            for (i =0; i < pronosticos.size() ; i++) {
-                totalPuntos += pronosticosRonda[i].puntos();
-            }
+            //invoco a metodo estatico obtener puntos
+            int totalPuntos= obtenerPuntos(pronosticosRonda,pronosticos.size());
             System.out.println("El puntaje de acuerdo al pronostico que seteo es: "+ totalPuntos);
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

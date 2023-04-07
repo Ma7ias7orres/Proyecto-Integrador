@@ -44,9 +44,10 @@ public class Partido {
             if (golesEquipo1>golesEquipo2){
                 return ResultadoEnum.GANADOR;
             }else {
-                return ResultadoEnum.GANADOR;
+                return ResultadoEnum.PERDEDOR;
             }
         }
+
         if (equipo.equals(equipo2)){
             if (golesEquipo2>golesEquipo1 ){
                 return ResultadoEnum.GANADOR;
@@ -54,6 +55,8 @@ public class Partido {
                 return ResultadoEnum.PERDEDOR;
             }
         }
+
+
         return null;
     }
 
