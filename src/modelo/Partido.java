@@ -4,7 +4,6 @@ public class Partido {
     private Equipo equipo2;
     private int golesEquipo1;
     private int golesEquipo2;
-
     public Partido() {
     }
     public Partido(Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2) {
@@ -38,9 +37,6 @@ public class Partido {
     public void setGolesEquipo2(int golesEquipo2) {
         this.golesEquipo2 = golesEquipo2;
     }
-
-
-
     public  ResultadoEnum resultado (Equipo equipo) {
        if(golesEquipo1 ==  golesEquipo2){
             return  ResultadoEnum.EMPATE;
@@ -61,7 +57,6 @@ public class Partido {
         }
         return null;
     }
-
 }
 
 

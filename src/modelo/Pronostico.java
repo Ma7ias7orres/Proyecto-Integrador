@@ -3,21 +3,26 @@ public class Pronostico {
     private Partido partido;
     private Equipo equipo;
     private ResultadoEnum resultado;
-    private String participante;
+    private Persona participante;
+
     public Pronostico() {
     }
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado,String participante) {
+
+    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado, Persona participante) {
         this.partido = partido;
         this.equipo = equipo;
         this.resultado = resultado;
-        this.participante=participante;
+        this.participante = participante;
     }
+
     public Partido getPartido() {
         return partido;
     }
+
     public void setPartido(Partido partido) {
         this.partido = partido;
     }
+
     public Equipo getEquipo() {
         return equipo;
     }
@@ -34,11 +39,11 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
-    public String getParticipante() {
+    public Persona getParticipante() {
         return participante;
     }
 
-    public void setParticipante(String participante) {
+    public void setParticipante(Persona participante) {
         this.participante = participante;
     }
 
